@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { allCategories, getAllCategories } from "./categorySlice";
 import { collectedItemCountByItemId } from "../collected-items/collectedItemSlice";
@@ -8,8 +8,6 @@ import {
 } from "../collected-items/collectedItemSlice";
 
 const CategoryItemListItemForm = (props) => {
-  const defaultQuantity = 1;
-  const [quantity, setQuantity] = useState(defaultQuantity);
   const dispatch = useDispatch();
   const collectedItemCount = useSelector(
     collectedItemCountByItemId(props.item.id)
@@ -34,7 +32,6 @@ const CategoryItemListItemForm = (props) => {
         <button
           type="button"
           onClick={handleQuantityDecrement(props.item)}
-          type="submit"
           className="bg-gray-800 text-white rounded"
         >
           <span className="sr-only">Remove</span>
@@ -52,7 +49,6 @@ const CategoryItemListItemForm = (props) => {
         <button
           type="button"
           onClick={handleQuantityIncrement(props.item)}
-          type="submit"
           className="bg-gray-800 text-white rounded"
         >
           <span className="sr-only">Add</span>
